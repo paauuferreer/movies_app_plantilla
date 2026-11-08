@@ -7,11 +7,11 @@ class MovieSlider extends StatefulWidget {
   final Function onNextPage;
 
   const MovieSlider({
-    Key? key,
+    super.key,
     required this.pelis,
     this.titol,
     required this.onNextPage,
-  }) : super(key: key);
+  });
 
   @override
   State<MovieSlider> createState() => _MovieSliderState();
@@ -70,7 +70,7 @@ class _MovieSliderState extends State<MovieSlider> {
 class _MoviePoster extends StatelessWidget {
   final Movie peli;
 
-  const _MoviePoster({Key? key, required this.peli}) : super(key: key);
+  const _MoviePoster({super.key, required this.peli});
 
   @override
   Widget build(BuildContext context) {

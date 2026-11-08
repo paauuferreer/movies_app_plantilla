@@ -17,7 +17,7 @@ class MoviesProvider extends ChangeNotifier {
     getPelisPopulars();
   }
 
-  getPelisCartellera() async {
+  void getPelisCartellera() async {
     final url = Uri.https(_baseUrl, '3/movie/now_playing', {
       'api_key': _apiKey,
       'language': _idioma,
@@ -30,7 +30,7 @@ class MoviesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getPelisPopulars() async {
+  void getPelisPopulars() async {
     _popularsPagina++;
     final url = Uri.https(_baseUrl, '3/movie/popular', {
       'api_key': _apiKey,
@@ -58,5 +58,17 @@ class MoviesProvider extends ChangeNotifier {
     final creditsResponse = CreditsResponse.fromJson(resposta.body);
     castingActors[idMovie] = creditsResponse.cast;
     return creditsResponse.cast;
+  }
+
+  Future<List<Movie>> cercarPelis(String query) async {
+    final url = Uri.https(_baseUrl, '3/search/movie', {
+      'api_key': _apiKey,
+      'language': _idioma,
+      'query': query,
+    });
+
+    final resposta = await http.get(url);
+    final searchResponse = SearchResponse.fromJson(resposta.body);
+    return searchResponse.results;
   }
 }

@@ -3,7 +3,7 @@ import 'package:movies_app/models/models.dart';
 import 'package:movies_app/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key}) : super(key: key);
+  const DetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class DetailsScreen extends StatelessWidget {
 class _CustomAppBar extends StatelessWidget {
   final Movie peli;
 
-  const _CustomAppBar({Key? key, required this.peli}) : super(key: key);
+  const _CustomAppBar({super.key, required this.peli});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class _CustomAppBar extends StatelessWidget {
 class _PosterAndTitle extends StatelessWidget {
   final Movie peli;
 
-  const _PosterAndTitle({Key? key, required this.peli}) : super(key: key);
+  const _PosterAndTitle({super.key, required this.peli});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,7 @@ class _PosterAndTitle extends StatelessWidget {
 class _Overview extends StatelessWidget {
   final Movie peli;
 
-  const _Overview({Key? key, required this.peli}) : super(key: key);
+  const _Overview({super.key, required this.peli});
 
   @override
   Widget build(BuildContext context) {

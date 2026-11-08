@@ -33,7 +33,7 @@ class Cast {
   String? department;
   String? job;
 
-  get fullProfilePath {
+  String get fullProfilePath {
     if (profilePath != null) {
       return 'https://image.tmdb.org/t/p/w500$profilePath';
     }

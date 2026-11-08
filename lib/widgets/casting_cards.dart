@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class CastingCards extends StatelessWidget {
   final int idMovie;
 
-  const CastingCards({Key? key, required this.idMovie}) : super(key: key);
+  const CastingCards({super.key, required this.idMovie});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class CastingCards extends StatelessWidget {
 class _CastCard extends StatelessWidget {
   final Cast actor;
 
-  const _CastCard({Key? key, required this.actor}) : super(key: key);
+  const _CastCard({super.key, required this.actor});
 
   @override
   Widget build(BuildContext context) {

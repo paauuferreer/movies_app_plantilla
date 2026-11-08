@@ -14,12 +14,14 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => MoviesProvider(), lazy: false),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,8 +29,8 @@ class MyApp extends StatelessWidget {
       title: 'Pel·lícules',
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => HomeScreen(),
-        'details': (BuildContext context) => DetailsScreen(),
+        '/': (BuildContext context) => const HomeScreen(),
+        'details': (BuildContext context) => const DetailsScreen(),
       },
       theme: ThemeData.light()
           .copyWith(appBarTheme: const AppBarTheme(backgroundColor: Colors.indigo)),
