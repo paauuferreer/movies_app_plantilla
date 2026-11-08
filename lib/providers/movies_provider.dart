@@ -9,6 +9,7 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> pelisCartellera = [];
   List<Movie> pelisPopulars = [];
+  Map<int, List<Cast>> castingActors = {};
   int _popularsPagina = 0;
 
   MoviesProvider() {
@@ -41,5 +42,21 @@ class MoviesProvider extends ChangeNotifier {
     final popularResponse = PopularResponse.fromJson(resposta.body);
     pelisPopulars = [...pelisPopulars, ...popularResponse.results];
     notifyListeners();
+  }
+
+  Future<List<Cast>> getActors(int idMovie) async {
+    if (castingActors.containsKey(idMovie)) {
+      return castingActors[idMovie]!;
+    }
+
+    final url = Uri.https(_baseUrl, '3/movie/$idMovie/credits', {
+      'api_key': _apiKey,
+      'language': _idioma,
+    });
+
+    final resposta = await http.get(url);
+    final creditsResponse = CreditsResponse.fromJson(resposta.body);
+    castingActors[idMovie] = creditsResponse.cast;
+    return creditsResponse.cast;
   }
 }
